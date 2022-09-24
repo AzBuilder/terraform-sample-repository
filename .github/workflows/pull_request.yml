@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: AzBuilder/terrakube-action-github@0.3.3 
+    - uses: AzBuilder/terrakube-action-github@0.3.4 
       with:
         TERRAKUBE_TOKEN:  ${{ secrets.TERRAKUBE_PAT }} 
         TERRAKUBE_TEMPLATE: "Terraform-Plan"
