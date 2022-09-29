@@ -12,11 +12,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: AzBuilder/terrakube-action-github@0.3.6 
-      with:
-        TERRAKUBE_TOKEN:  ${{ secrets.TERRAKUBE_PAT }} 
-        TERRAKUBE_TEMPLATE: "Terraform-Plan"
-        TERRAKUBE_REPOSITORY: "https://github.com/AzBuilder/terraform-sample-repository.git"
-        TERRAKUBE_ENDPOINT: ${{ secrets.TERRAKUBE_GITPOD }}  
-        TERRAKUBE_BRANCH: ${{ github.event.pull_request.base.ref }}
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+      
+      # Example 1
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v31
+
+      - name: List all changed files
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$file was changed"
+          done
+    
+    #- uses: AzBuilder/terrakube-action-github@0.3.6 
+    #  with:
+    #    TERRAKUBE_TOKEN:  ${{ secrets.TERRAKUBE_PAT }} 
+    #    TERRAKUBE_TEMPLATE: "Terraform-Plan"
+    #    TERRAKUBE_REPOSITORY: "https://github.com/AzBuilder/terraform-sample-repository.git"
+    #    TERRAKUBE_ENDPOINT: ${{ secrets.TERRAKUBE_GITPOD }}  
+    #    TERRAKUBE_BRANCH: ${{ github.event.pull_request.base.ref }}
+    #    TOKEN: ${{ secrets.GITHUB_TOKEN }}
