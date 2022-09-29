@@ -12,10 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: AzBuilder/terrakube-action-github@0.3.5 
+    - uses: AzBuilder/terrakube-action-github@0.3.6 
       with:
         TERRAKUBE_TOKEN:  ${{ secrets.TERRAKUBE_PAT }} 
         TERRAKUBE_TEMPLATE: "Terraform-Plan"
         TERRAKUBE_REPOSITORY: "https://github.com/AzBuilder/terraform-sample-repository.git"
         TERRAKUBE_ENDPOINT: ${{ secrets.TERRAKUBE_GITPOD }}  
+        TERRAKUBE_BRANCH: ${{ github.event.pull_request.base.ref }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
