@@ -36,7 +36,7 @@ jobs:
       - name: Check output
         run: echo ${{ github.head_ref }}
 
-      - uses: AzBuilder/terrakube-action-github@0.3.7
+      - uses: AzBuilder/terrakube-action-github@0.3.9
         with:
           TERRAKUBE_TOKEN:  ${{ secrets.TERRAKUBE_PAT }} 
           TERRAKUBE_TEMPLATE: "Terraform-Plan"
