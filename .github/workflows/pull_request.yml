@@ -20,6 +20,8 @@ jobs:
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v31
+        with:
+          dir_names: "true"
 
       - name: List all changed files
         run: |
@@ -27,11 +29,18 @@ jobs:
             echo "$file was changed"
           done
     
+      - name: Set output
+        id: vars
+        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+
+      - name: Check output
+        run: echo ${{ steps.vars.outputs.short_ref }}
+
     #- uses: AzBuilder/terrakube-action-github@0.3.6 
     #  with:
     #    TERRAKUBE_TOKEN:  ${{ secrets.TERRAKUBE_PAT }} 
     #    TERRAKUBE_TEMPLATE: "Terraform-Plan"
     #    TERRAKUBE_REPOSITORY: "https://github.com/AzBuilder/terraform-sample-repository.git"
     #    TERRAKUBE_ENDPOINT: ${{ secrets.TERRAKUBE_GITPOD }}  
-    #    TERRAKUBE_BRANCH: ${{ github.event.pull_request.base.ref }}
+    #    TERRAKUBE_BRANCH: ${{ github.ref_name }}
     #    TOKEN: ${{ secrets.GITHUB_TOKEN }}

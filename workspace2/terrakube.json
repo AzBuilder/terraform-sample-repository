@@ -3,5 +3,5 @@
 	"workspace": "workspace_demo2",
 	"workspaceSrc": "https://github.com/AzBuilder/terraform-sample-repository.git",
 	"terraform": "1.2.9",
-	"folder": "/workspace2"
+	"folder": "/workspace2" 
 }
