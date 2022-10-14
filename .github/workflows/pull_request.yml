@@ -17,20 +17,20 @@ jobs:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
       
       # Example 1
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v31
-        with:
-          dir_names: "true"
+      #- name: Get changed files
+      #  id: changed-files
+      #  uses: tj-actions/changed-files@v31
+      #  with:
+      #    dir_names: "true"
 
-      - name: List all changed files
-        run: |
-          echo "$SAMPLE"
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "$file was changed"
-          done
-        env:
-          SAMPLE: ${{ steps.changed-files.outputs.all_changed_files }}
+      #- name: List all changed files
+      #  run: |
+      #    echo "$SAMPLE"
+      #    for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+      #      echo "$file was changed"
+      #    done
+      #  env:
+      #    SAMPLE: ${{ steps.changed-files.outputs.all_changed_files }}
     
       #- name: Set output
       #  id: vars
@@ -39,11 +39,11 @@ jobs:
       #- name: Check output
       #  run: echo ${{ github.head_ref }}
 
-      #- uses: AzBuilder/terrakube-action-github@0.3.9
-      #  with:
-      #    TERRAKUBE_TOKEN:  ${{ secrets.TERRAKUBE_PAT }} 
-      #    TERRAKUBE_TEMPLATE: "Terraform-Plan"
-      #    TERRAKUBE_REPOSITORY: ${{ format('{0}/{1}.git', secrets.FOLDER, secrets.FILENAME, secrets.EXT) }}
-      #    TERRAKUBE_ENDPOINT: ${{ secrets.TERRAKUBE_GITPOD }}  
-      #    TERRAKUBE_BRANCH: ${{ github.head_ref }}
-      #    TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: AzBuilder/terrakube-action-github@main
+        with:
+          TERRAKUBE_TOKEN:  ${{ secrets.TERRAKUBE_PAT }} 
+          TERRAKUBE_TEMPLATE: "Terraform-Plan"
+          TERRAKUBE_REPOSITORY: ${{ format('{0}/{1}.git', secrets.FOLDER, secrets.FILENAME, secrets.EXT) }}
+          TERRAKUBE_ENDPOINT: ${{ secrets.TERRAKUBE_GITPOD }}  
+          TERRAKUBE_BRANCH: ${{ github.head_ref }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
