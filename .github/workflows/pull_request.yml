@@ -46,4 +46,5 @@ jobs:
           TERRAKUBE_REPOSITORY: ${{ format('{0}/{1}.git', secrets.FOLDER, secrets.FILENAME, secrets.EXT) }}
           TERRAKUBE_ENDPOINT: ${{ secrets.TERRAKUBE_GITPOD }}  
           TERRAKUBE_BRANCH: ${{ github.head_ref }}
+          TERRAKUBE_ORGANIZATION: "simple"
           TOKEN: ${{ secrets.GITHUB_TOKEN }}

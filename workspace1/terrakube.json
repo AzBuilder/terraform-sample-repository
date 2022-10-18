@@ -1,8 +1,3 @@
 {
-	"organization": "simple",
-	"workspace": "workspace_demo1",
-	"workspaceSrc": "https://github.com/AzBuilder/terraform-sample-repository.git",
-	"terraform": "1.2.9",
-	"folder": "/workspace1"
+	"terraform": "1.2.8"
 }
- 
