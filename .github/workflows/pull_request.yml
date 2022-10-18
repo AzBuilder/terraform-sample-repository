@@ -47,5 +47,5 @@ jobs:
           TERRAKUBE_ENDPOINT: ${{ secrets.TERRAKUBE_GITPOD }}  
           TERRAKUBE_BRANCH: ${{ github.head_ref }}
           TERRAKUBE_ORGANIZATION: "simple"
-          TERRAKUBE_SHOW_OUTPUT: true
+          SHOW_OUTPUT: true
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
