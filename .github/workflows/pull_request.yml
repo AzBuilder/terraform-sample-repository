@@ -43,7 +43,6 @@ jobs:
         with:
           TERRAKUBE_TOKEN:  ${{ secrets.TERRAKUBE_PAT }} 
           TERRAKUBE_TEMPLATE: "Terraform-Plan"
-          TERRAKUBE_REPOSITORY: ${{ format('{0}/{1}.git', secrets.FOLDER, secrets.FILENAME) }}
           TERRAKUBE_ENDPOINT: ${{ secrets.TERRAKUBE_GITPOD }}  
           TERRAKUBE_BRANCH: ${{ github.head_ref }}
           TERRAKUBE_ORGANIZATION: "simple"
