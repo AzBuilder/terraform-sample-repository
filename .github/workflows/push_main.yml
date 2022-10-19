@@ -1,13 +1,14 @@
-name: Terrakube Plan
+name: Terrukbe Apply
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: "Terrakube Plan"
+    name: "Terrakube Apply"
     steps:
       - uses: actions/checkout@v3
         with:
@@ -16,9 +17,9 @@ jobs:
       - uses: AzBuilder/terrakube-action-github@main
         with:
           TERRAKUBE_TOKEN:  ${{ secrets.TERRAKUBE_PAT }} 
-          TERRAKUBE_TEMPLATE: "Terraform-Plan"
-          TERRAKUBE_ENDPOINT: ${{ secrets.TERRAKUBE_GITPOD }}  
-          TERRAKUBE_BRANCH: ${{ github.head_ref }}
+          TERRAKUBE_TEMPLATE: "Terraform-Plan/Apply"
+          TERRAKUBE_ENDPOINT: ${{ secrets.TERRAKUBE_ENDPOINT }}  
+          TERRAKUBE_BRANCH: "main"
           TERRAKUBE_ORGANIZATION: "simple"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SHOW_OUTPUT: true
